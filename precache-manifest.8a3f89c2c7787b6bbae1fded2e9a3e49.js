@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c0a942dee88bd8712f8a36ad4c50e726",
+    "revision": "18c5c931facf4729f3f4707d7cbc085d",
     "url": "//robertasliekis.github.io/power-plant-3d/index.html"
   },
   {
-    "revision": "86f88c6b3a6db187edb1",
+    "revision": "b4ea275d893fedd3ddf1",
     "url": "//robertasliekis.github.io/power-plant-3d/static/css/main.d27678ba.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "//robertasliekis.github.io/power-plant-3d/static/js/2.cd152954.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "86f88c6b3a6db187edb1",
-    "url": "//robertasliekis.github.io/power-plant-3d/static/js/main.989d4b93.chunk.js"
+    "revision": "b4ea275d893fedd3ddf1",
+    "url": "//robertasliekis.github.io/power-plant-3d/static/js/main.6aad3e40.chunk.js"
   },
   {
     "revision": "96c0f5dc04f899662d39",
