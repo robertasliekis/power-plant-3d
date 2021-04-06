@@ -18,7 +18,7 @@ const CameraControls = ({ windowWidth }) => {
   const controls = useRef();
   useFrame((state) => controls.current.update());
   let minDistance = 50;
-  let maxDistance = 150;
+  let maxDistance = 250;
   // if (windowWidth < 450) {
   //   minDistance = 250;
   //   maxDistance = 400;
