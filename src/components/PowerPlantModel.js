@@ -7,7 +7,7 @@ import LoadFloorModel from "../functions/LoadFloorModel";
 const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorChange, onClickedRoomChange }) => {
   const [floorBaseMesh, floorSideMesh, floorsRoomsMeshes] = LoadFloorModel();
 
-  const [groundMesh, roadMesh, buildingMesh, chimneyMesh01, chimneyMesh02, chimneyMesh03] = LoadPlantModel();
+  const [groundMesh, roadMesh, buildingsMesh, chimneyMesh01, chimneyMesh02, chimneyMesh03, activeBuildings] = LoadPlantModel();
 
   LoadPlantModel();
 
@@ -67,21 +67,29 @@ const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorCha
   const [hoveredRoom, setHoveredRoom] = useState(null);
 
   const hoveredOnFloor = (index, mouseInside) => {
-    if (clickedFloor === null) {
-      if (mouseInside) {
-        setHoveredFloor(index);
-      } else if (hoveredFloor === index) {
-        setHoveredFloor(null);
-      }
-    } else {
+    // if (clickedFloor === null) {
+    //   if (mouseInside) {
+    //     setHoveredFloor(index);
+    //   } else if (hoveredFloor === index) {
+    //     setHoveredFloor(null);
+    //   }
+    // } else {
+    //   setHoveredFloor(null);
+    // }
+
+    if (mouseInside) {
+      setHoveredFloor(index);
+    } else if (hoveredFloor === index) {
       setHoveredFloor(null);
     }
   };
 
   const clickedOnFloor = (index) => {
-    if (clickedFloor === null) {
-      onClickedFloorChange(index);
-    }
+    onClickedFloorChange(index);
+
+    // if (clickedFloor === null) {
+    //   onClickedFloorChange(index);
+    // }
   };
 
   const clickedOnRoom = (index, event) => {
@@ -109,13 +117,33 @@ const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorCha
 
   return (
     <group ref={buildingRef} position={[0, -20, 0]}>
+      {activeBuildings.map((building, buildingIndex) => (
+        <mesh
+          geometry={building}
+          key={buildingIndex}
+          dispose={null}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            hoveredOnFloor(buildingIndex, true);
+          }}
+          onPointerOut={(e) => {
+            e.intersections.length && hoveredOnFloor(buildingIndex, false);
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            clickedOnFloor(buildingIndex);
+          }}
+        >
+          <meshStandardMaterial attach="material" transparent={true} color={hoveredFloor === buildingIndex ? "#00FBFF" : "grey"} />
+        </mesh>
+      ))}
       <mesh geometry={groundMesh}>
         <meshStandardMaterial attach="material" transparent={true} color={"white"} />
       </mesh>
       <mesh geometry={roadMesh}>
         <meshStandardMaterial attach="material" transparent={true} color={"black"} />
       </mesh>
-      <mesh geometry={buildingMesh}>
+      <mesh geometry={buildingsMesh}>
         <meshStandardMaterial attach="material" transparent={true} color={"grey"} />
       </mesh>
       <mesh geometry={chimneyMesh01}>

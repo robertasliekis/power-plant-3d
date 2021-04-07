@@ -63,10 +63,6 @@ div {
   height: calc(100% - 60px);
 }
 
-.info-window .floor-container {
-  height: 150px;
-}
-
 .info-window .floor-container .text-container h1:nth-child(1) {
   margin-bottom: 10px;
 }

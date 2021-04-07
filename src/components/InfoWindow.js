@@ -5,7 +5,7 @@ import { setClickedFloor, setClickedRoom } from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import floorsData from "../data/floorsData";
+import buildingsData from "../data/buildingsData";
 
 function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom }) {
   const [floorText, setFloorText] = useState("");
@@ -13,10 +13,10 @@ function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom
 
   useEffect(() => {
     if (clickedFloor !== null) {
-      setFloorText(floorsData[clickedFloor].description);
+      setFloorText(buildingsData[clickedFloor].description);
     }
     if (clickedRoom !== null) {
-      setRoomText(floorsData[clickedFloor].rooms[clickedRoom]);
+      setRoomText(buildingsData[clickedFloor].rooms[clickedRoom]);
     }
   }, [clickedFloor, clickedRoom]);
 
@@ -27,8 +27,8 @@ function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom
         style={{ transform: clickedFloor !== null ? "translate(-100%, 0)" : "translate(0, 0)", opacity: clickedFloor !== null ? 1 : 0 }}
       >
         <div className="text-container">
-          <h1>{`Floor ${clickedFloor + 1}:`}</h1>
-          <h1>{`${floorText}`}</h1>
+          <h1>{`Building ${clickedFloor + 1}:`}</h1>
+          <p>{`${floorText}`}</p>
         </div>
         <div
           className="btn btn-close"
