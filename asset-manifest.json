@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "//robertasliekis.github.io/power-plant-3d/static/css/main.643f914c.chunk.css",
-    "main.js": "//robertasliekis.github.io/power-plant-3d/static/js/main.5e4853fd.chunk.js",
-    "main.js.map": "//robertasliekis.github.io/power-plant-3d/static/js/main.5e4853fd.chunk.js.map",
+    "main.css": "//robertasliekis.github.io/power-plant-3d/static/css/main.d2bb7abc.chunk.css",
+    "main.js": "//robertasliekis.github.io/power-plant-3d/static/js/main.a063d6be.chunk.js",
+    "main.js.map": "//robertasliekis.github.io/power-plant-3d/static/js/main.a063d6be.chunk.js.map",
     "runtime-main.js": "//robertasliekis.github.io/power-plant-3d/static/js/runtime-main.978fef1a.js",
     "runtime-main.js.map": "//robertasliekis.github.io/power-plant-3d/static/js/runtime-main.978fef1a.js.map",
-    "static/js/2.cd152954.chunk.js": "//robertasliekis.github.io/power-plant-3d/static/js/2.cd152954.chunk.js",
-    "static/js/2.cd152954.chunk.js.map": "//robertasliekis.github.io/power-plant-3d/static/js/2.cd152954.chunk.js.map",
+    "static/js/2.2188d429.chunk.js": "//robertasliekis.github.io/power-plant-3d/static/js/2.2188d429.chunk.js",
+    "static/js/2.2188d429.chunk.js.map": "//robertasliekis.github.io/power-plant-3d/static/js/2.2188d429.chunk.js.map",
     "index.html": "//robertasliekis.github.io/power-plant-3d/index.html",
-    "precache-manifest.b9be916818dbd63f1d1ebc85ec993596.js": "//robertasliekis.github.io/power-plant-3d/precache-manifest.b9be916818dbd63f1d1ebc85ec993596.js",
+    "precache-manifest.090370456586b5d0c2167c9e8f4f3bab.js": "//robertasliekis.github.io/power-plant-3d/precache-manifest.090370456586b5d0c2167c9e8f4f3bab.js",
     "service-worker.js": "//robertasliekis.github.io/power-plant-3d/service-worker.js",
-    "static/css/main.643f914c.chunk.css.map": "//robertasliekis.github.io/power-plant-3d/static/css/main.643f914c.chunk.css.map",
-    "static/js/2.cd152954.chunk.js.LICENSE.txt": "//robertasliekis.github.io/power-plant-3d/static/js/2.cd152954.chunk.js.LICENSE.txt"
+    "static/css/main.d2bb7abc.chunk.css.map": "//robertasliekis.github.io/power-plant-3d/static/css/main.d2bb7abc.chunk.css.map",
+    "static/js/2.2188d429.chunk.js.LICENSE.txt": "//robertasliekis.github.io/power-plant-3d/static/js/2.2188d429.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.978fef1a.js",
-    "static/js/2.cd152954.chunk.js",
-    "static/css/main.643f914c.chunk.css",
-    "static/js/main.5e4853fd.chunk.js"
+    "static/js/2.2188d429.chunk.js",
+    "static/css/main.d2bb7abc.chunk.css",
+    "static/js/main.a063d6be.chunk.js"
   ]
 }

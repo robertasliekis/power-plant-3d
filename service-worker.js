@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "//robertasliekis.github.io/power-plant-3d/precache-manifest.b9be916818dbd63f1d1ebc85ec993596.js"
+  "//robertasliekis.github.io/power-plant-3d/precache-manifest.090370456586b5d0c2167c9e8f4f3bab.js"
 );
 
 self.addEventListener('message', (event) => {
