@@ -1,15 +1,37 @@
 import React, { useRef, useState } from "react";
+import * as THREE from "three";
 import { useFrame } from "react-three-fiber";
-
+import { useLoader } from "react-three-fiber";
 import LoadPlantModel from "../functions/LoadPlantModel";
-import LoadFloorModel from "../functions/LoadFloorModel";
+//import chimney_image from '/chimney_stripes.jpg'
 
-const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorChange, onClickedRoomChange }) => {
-  const [floorBaseMesh, floorSideMesh, floorsRoomsMeshes] = LoadFloorModel();
-
-  const [groundMesh, roadMesh, buildingsMesh, chimneyMesh01, chimneyMesh02, chimneyMesh03, activeBuildings] = LoadPlantModel();
+const FloorsModel = ({
+  windowWidth,
+  clickedFloor,
+  clickedRoom,
+  onClickedFloorChange,
+  onClickedRoomChange,
+}) => {
+  const [
+    groundMesh,
+    roadMesh,
+    buildingsMesh,
+    chimneyMeshes,
+    activeBuildings,
+    pipesMeshes,
+  ] = LoadPlantModel();
 
   LoadPlantModel();
+
+  //console.log(pipesMeshes);
+
+  const chimneyTexture = useLoader(
+    THREE.TextureLoader,
+    "./models/chimney_stripes.jpg"
+  );
+  chimneyTexture.wrapS = THREE.RepeatWrapping;
+  chimneyTexture.wrapT = THREE.RepeatWrapping;
+  chimneyTexture.repeat.set(1, 1);
 
   const buildingRef = useRef();
   const floorRefs = useRef([]);
@@ -86,7 +108,6 @@ const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorCha
 
   const clickedOnFloor = (index) => {
     onClickedFloorChange(index);
-
     // if (clickedFloor === null) {
     //   onClickedFloorChange(index);
     // }
@@ -116,7 +137,11 @@ const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorCha
   };
 
   return (
-    <group ref={buildingRef} position={[0, -20, 0]}>
+    <group
+      ref={buildingRef}
+      position={[0, 0, 0]}
+      rotation={convertDegreesToRadians(-90, 0, 0)}
+    >
       {activeBuildings.map((building, buildingIndex) => (
         <mesh
           geometry={building}
@@ -134,26 +159,59 @@ const FloorsModel = ({ windowWidth, clickedFloor, clickedRoom, onClickedFloorCha
             clickedOnFloor(buildingIndex);
           }}
         >
-          <meshStandardMaterial attach="material" transparent={true} color={hoveredFloor === buildingIndex ? "#00FBFF" : "grey"} />
+          <meshStandardMaterial
+            attach="material"
+            transparent={true}
+            color={hoveredFloor === buildingIndex ? "#00FBFF" : "grey"}
+          />
         </mesh>
       ))}
       <mesh geometry={groundMesh}>
-        <meshStandardMaterial attach="material" transparent={true} color={"white"} />
+        <meshStandardMaterial
+          attach="material"
+          transparent={true}
+          color={"white"}
+        />
       </mesh>
       <mesh geometry={roadMesh}>
-        <meshStandardMaterial attach="material" transparent={true} color={"black"} />
+        <meshStandardMaterial
+          attach="material"
+          transparent={true}
+          color={"#CDCDCD"}
+        />
       </mesh>
       <mesh geometry={buildingsMesh}>
-        <meshStandardMaterial attach="material" transparent={true} color={"grey"} />
+        <meshStandardMaterial
+          attach="material"
+          transparent={true}
+          color={"white"}
+        />
       </mesh>
-      <mesh geometry={chimneyMesh01}>
-        <meshStandardMaterial attach="material" transparent={true} color={"grey"} />
+      <mesh geometry={chimneyMeshes.chimneyMesh01}>
+        <meshStandardMaterial
+          attach="material"
+          color={"white"}
+          map={chimneyTexture}
+        />
       </mesh>
-      <mesh geometry={chimneyMesh02}>
-        <meshStandardMaterial attach="material" transparent={true} color={"grey"} />
+      <mesh geometry={chimneyMeshes.chimneyMesh02}>
+        <meshStandardMaterial attach="material" color={"white"} />
       </mesh>
-      <mesh geometry={chimneyMesh03}>
-        <meshStandardMaterial attach="material" transparent={true} color={"grey"} />
+      <mesh geometry={chimneyMeshes.chimneyMesh03}>
+        <meshStandardMaterial
+          attach="material"
+          color={"white"}
+          map={chimneyTexture}
+        />
+      </mesh>
+      <mesh geometry={pipesMeshes.pipesGreyMesh}>
+        <meshStandardMaterial attach="material" color={"#CDCDCD"} />
+      </mesh>
+      <mesh geometry={pipesMeshes.pipesYellowMesh}>
+        <meshStandardMaterial attach="material" color={"yellow"} />
+      </mesh>
+      <mesh geometry={pipesMeshes.pipesSupportMesh}>
+        <meshStandardMaterial attach="material" color={"yellow"} />
       </mesh>
     </group>
   );

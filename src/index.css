@@ -41,6 +41,8 @@ div {
   height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#b6a791));
   background: linear-gradient(180deg, #f8f8f8 0%, #b6a791 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#d8d8d8), to(#b8b2a8));
+  background: linear-gradient(180deg, #d8d8d8 0%, #b8b2a8 100%);
   position: relative;
   overflow: hidden;
 }

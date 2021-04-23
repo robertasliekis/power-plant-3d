@@ -7,28 +7,31 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import buildingsData from "../data/buildingsData";
 
-function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom }) {
+function InfoWindow({ clickedFloor, setClickedFloor }) {
   const [floorText, setFloorText] = useState("");
-  const [roomText, setRoomText] = useState({ name: "", description: "" });
 
   useEffect(() => {
     if (clickedFloor !== null) {
-      setFloorText(buildingsData[clickedFloor].description);
+      setFloorText(buildingsData[clickedFloor]);
     }
-    if (clickedRoom !== null) {
-      setRoomText(buildingsData[clickedFloor].rooms[clickedRoom]);
-    }
-  }, [clickedFloor, clickedRoom]);
+  }, [clickedFloor]);
 
   return (
     <div className="info-window">
       <div
         className="floor-container container"
-        style={{ transform: clickedFloor !== null ? "translate(-100%, 0)" : "translate(0, 0)", opacity: clickedFloor !== null ? 1 : 0 }}
+        style={{
+          transform:
+            clickedFloor !== null ? "translate(-100%, 0)" : "translate(0, 0)",
+          opacity: clickedFloor !== null ? 1 : 0,
+        }}
       >
         <div className="text-container">
-          <h1>{`Building ${clickedFloor + 1}:`}</h1>
-          <p>{`${floorText}`}</p>
+          <h1>{`${floorText.name}`}</h1>
+          <p>{`${floorText.description}`}</p>
+          {floorText.tourLink ? (
+            <a href={`${floorText.tourLink}`}>Go to virtual tour</a>
+          ) : null}
         </div>
         <div
           className="btn btn-close"
@@ -40,15 +43,6 @@ function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom
           <FontAwesomeIcon icon={faTimes} className="icon" />
         </div>
       </div>
-      <div
-        className="room-container container"
-        style={{ transform: clickedRoom !== null ? "translate(-100%, 0)" : "translate(0, 0)", opacity: clickedRoom !== null ? 1 : 0 }}
-      >
-        <div className="text-container">
-          <h1>{roomText.name}</h1>
-          <p>{roomText.description}</p>
-        </div>
-      </div>
     </div>
   );
 }
@@ -56,13 +50,11 @@ function InfoWindow({ clickedFloor, clickedRoom, setClickedFloor, setClickedRoom
 const mapStateToProps = (state) => {
   return {
     clickedFloor: state.setClickedFloor.clickedFloor,
-    clickedRoom: state.setClickedRoom.clickedRoom
   };
 };
 
 const mapDispatchToProps = {
   setClickedFloor,
-  setClickedRoom
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InfoWindow);
