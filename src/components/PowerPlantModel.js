@@ -19,19 +19,28 @@ const FloorsModel = ({
     chimneyMeshes,
     activeBuildings,
     pipesMeshes,
+    windowsMesh,
   ] = LoadPlantModel();
 
   LoadPlantModel();
 
   //console.log(pipesMeshes);
 
-  const chimneyTexture = useLoader(
+  const buildingsTexture = useLoader(
     THREE.TextureLoader,
-    "./models/chimney_stripes.jpg"
+    "./models/buildings_main_Base_Color.jpg"
   );
-  chimneyTexture.wrapS = THREE.RepeatWrapping;
-  chimneyTexture.wrapT = THREE.RepeatWrapping;
-  chimneyTexture.repeat.set(1, 1);
+  buildingsTexture.wrapS = THREE.RepeatWrapping;
+  buildingsTexture.wrapT = THREE.RepeatWrapping;
+  buildingsTexture.repeat.set(1, 1);
+
+  const groundTexture = useLoader(
+    THREE.TextureLoader,
+    "./models/ground_Base_Color.jpg"
+  );
+  groundTexture.wrapS = THREE.RepeatWrapping;
+  groundTexture.wrapT = THREE.RepeatWrapping;
+  groundTexture.repeat.set(1, 1);
 
   const buildingRef = useRef();
   const floorRefs = useRef([]);
@@ -162,14 +171,24 @@ const FloorsModel = ({
           <meshStandardMaterial
             attach="material"
             transparent={true}
-            color={hoveredFloor === buildingIndex ? "#00FBFF" : "grey"}
+            map={buildingsTexture}
+            color={hoveredFloor === buildingIndex ? "#A96666" : "white"}
           />
         </mesh>
       ))}
+      <mesh geometry={windowsMesh}>
+        <meshStandardMaterial
+          attach="material"
+          transparent={true}
+          color={"white"}
+          map={buildingsTexture}
+        />
+      </mesh>
       <mesh geometry={groundMesh}>
         <meshStandardMaterial
           attach="material"
           transparent={true}
+          map={groundTexture}
           color={"white"}
         />
       </mesh>
@@ -191,7 +210,7 @@ const FloorsModel = ({
         <meshStandardMaterial
           attach="material"
           color={"white"}
-          map={chimneyTexture}
+          map={buildingsTexture}
         />
       </mesh>
       <mesh geometry={chimneyMeshes.chimneyMesh02}>
@@ -201,7 +220,7 @@ const FloorsModel = ({
         <meshStandardMaterial
           attach="material"
           color={"white"}
-          map={chimneyTexture}
+          map={buildingsTexture}
         />
       </mesh>
       <mesh geometry={pipesMeshes.pipesGreyMesh}>

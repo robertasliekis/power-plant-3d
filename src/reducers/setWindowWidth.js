@@ -1,5 +1,5 @@
 const initialState = {
-  windowWidth: 0
+  windowWidth: null,
 };
 
 const setWindowWidth = (state = initialState, action) => {

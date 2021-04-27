@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+
+import IntroWindow from "./components/IntroWindow";
 import FloorsScene from "./components/FloorsScene";
 import InfoWindow from "./components/InfoWindow";
 import { setWindowWidth } from "./actions";
 
-//"homepage": "//https://robertasliekis.github.io/power-plant-3d/",
+//"homepage": "https://robertasliekis.github.io/power-plant-3d/",
 
 function App({ setWindowWidth }) {
   useEffect(() => {
@@ -22,6 +24,7 @@ function App({ setWindowWidth }) {
 
   return (
     <div className="website-wrapper">
+      <IntroWindow />
       <FloorsScene />
       <InfoWindow />
     </div>
@@ -29,7 +32,7 @@ function App({ setWindowWidth }) {
 }
 
 const mapDispatchToProps = {
-  setWindowWidth
+  setWindowWidth,
 };
 
 export default connect(null, mapDispatchToProps)(App);

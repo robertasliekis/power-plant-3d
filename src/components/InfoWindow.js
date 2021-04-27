@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { setClickedFloor, setClickedRoom } from "../actions";
+import { setClickedFloor } from "../actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import buildingsData from "../data/buildingsData";
 
-function InfoWindow({ clickedFloor, setClickedFloor }) {
+function InfoWindow({ clickedFloor, language, setClickedFloor }) {
   const [floorText, setFloorText] = useState("");
 
   useEffect(() => {
@@ -26,18 +26,20 @@ function InfoWindow({ clickedFloor, setClickedFloor }) {
           opacity: clickedFloor !== null ? 1 : 0,
         }}
       >
-        <div className="text-container">
-          <h1>{`${floorText.name}`}</h1>
-          <p>{`${floorText.description}`}</p>
-          {floorText.tourLink ? (
-            <a href={`${floorText.tourLink}`}>Go to virtual tour</a>
-          ) : null}
-        </div>
+        {floorText.name ? (
+          <div className="text-container">
+            <h1>{`${floorText.name[language]}`}</h1>
+            <p>{`${floorText.description[language]}`}</p>
+            {floorText.tourLink ? (
+              <a href={`${floorText.tourLink}`}>Go to virtual tour</a>
+            ) : null}
+          </div>
+        ) : null}
+
         <div
           className="btn btn-close"
           onClick={() => {
             setClickedFloor(null);
-            setClickedRoom(null);
           }}
         >
           <FontAwesomeIcon icon={faTimes} className="icon" />
@@ -50,6 +52,7 @@ function InfoWindow({ clickedFloor, setClickedFloor }) {
 const mapStateToProps = (state) => {
   return {
     clickedFloor: state.setClickedFloor.clickedFloor,
+    language: state.setLanguage.language,
   };
 };
 

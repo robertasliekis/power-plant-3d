@@ -21,6 +21,8 @@ function LoadPlantModel() {
   const roadMesh = nodes.road_1.geometry;
   const buildingsMesh = nodes.extra_buildings_1.geometry;
 
+  const windowsMesh = nodes.windows_1.geometry;
+
   const chimneyMesh01 = nodes.chimney_1_1.geometry;
   const chimneyMesh02 = nodes.chimney_2_1.geometry;
   const chimneyMesh03 = nodes.chimney_3_1.geometry;
@@ -40,6 +42,7 @@ function LoadPlantModel() {
     chimneyMeshes,
     activeBuildings,
     pipesMeshes,
+    windowsMesh,
   ];
 }
 

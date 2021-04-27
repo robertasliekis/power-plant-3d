@@ -1,20 +1,27 @@
 export const setClickedFloor = (index) => {
   return {
     type: "SET_CLICKED_FLOOR",
-    payload: index
+    payload: index,
   };
 };
 
 export const setClickedRoom = (index) => {
   return {
     type: "SET_CLICKED_ROOM",
-    payload: index
+    payload: index,
   };
 };
 
 export const setWindowWidth = (width) => {
   return {
     type: "SET_WINDOW_WIDTH",
-    payload: width
+    payload: width,
+  };
+};
+
+export const setLanguage = (language) => {
+  return {
+    type: "SET_LANGUAGE",
+    payload: language,
   };
 };
