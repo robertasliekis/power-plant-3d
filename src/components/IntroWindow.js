@@ -1,27 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { setLanguage } from "../actions";
+import { setLanguage, setIntroWindowVisisble } from "../actions";
+import textData from "../data/textData";
 
-function IntroWindow({ language, setLanguage }) {
+function IntroWindow({
+  language,
+  setLanguage,
+  introWindowVisible,
+  setIntroWindowVisisble,
+}) {
+  const [showWelcomeWindow, setShowWelcomeWindow] = useState(true);
+
   return (
     <div
       className="intro-window-container"
-      style={{ display: language === null ? "flex" : "none" }}
+      style={{ display: introWindowVisible ? "flex" : "none" }}
     >
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores
-        vitae quod consequuntur voluptas atque doloremque nisi, assumenda
-        eligendi optio corrupti dicta tempora distinctio omnis labore saepe
-        error mollitia esse.
-      </p>
-      <h1>Pasirinkite kalbą:</h1>
-      <div className="buttons">
-        <div className="btn btn-lt" onClick={() => setLanguage(0)}>
-          LT
+      <div
+        className="welcome-container"
+        style={{ display: showWelcomeWindow ? "flex" : "none" }}
+      >
+        <div className="middle-section">
+          <h1>{textData[0][language]}</h1>
+          <p>{textData[1][language]}</p>
+          <div
+            className="btn btn-start"
+            onClick={() => {
+              setShowWelcomeWindow(false);
+              setTimeout(function () {
+                setIntroWindowVisisble();
+              }, 1500);
+            }}
+            style={{
+              backgroundImage:
+                language === 0
+                  ? `url('./images/Asset 22.png')`
+                  : `url('./images/Asset 21.png')`,
+            }}
+          ></div>
         </div>
-        <div className="btn btn-en" onClick={() => setLanguage(1)}>
-          EN
-        </div>
+
+        <div
+          className="btn btn-language"
+          onClick={() => {
+            setLanguage();
+          }}
+          style={{
+            backgroundImage:
+              language === 0
+                ? `url('./images/Asset 24.png')`
+                : `url('./images/Asset 23.png')`,
+          }}
+        ></div>
+      </div>
+      <div
+        className="info-container"
+        style={{ display: showWelcomeWindow ? "none" : "flex" }}
+      >
+        <div className="image-rotate"></div>
+        <p>{textData[2][language]}</p>
       </div>
     </div>
   );
@@ -30,11 +67,13 @@ function IntroWindow({ language, setLanguage }) {
 const mapStateToProps = (state) => {
   return {
     language: state.setLanguage.language,
+    introWindowVisible: state.setIntroWindowVisisble.introWindowVisible,
   };
 };
 
 const mapDispatchToProps = {
   setLanguage,
+  setIntroWindowVisisble,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IntroWindow);

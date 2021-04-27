@@ -1,6 +1,9 @@
 const buildingsData = [
   {
-    name: ["Pastatas 1", "Building 1"],
+    name: [
+      "Gamybinis pastatas (pagrindinis korpusas)",
+      "Production Plant (Main building)",
+    ],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
@@ -8,7 +11,7 @@ const buildingsData = [
     tourLink: "http://e2.chc.lt/turas1/",
   },
   {
-    name: ["Pastatas 2", "Building 2"],
+    name: ["Vandens šildymo katilinė Nr.1", "Boiler Room 1"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
@@ -16,7 +19,7 @@ const buildingsData = [
     tourLink: "http://e2.chc.lt/turas2/",
   },
   {
-    name: ["Pastatas 3", "Building 3"],
+    name: ["Biokuro ūkis", "Biofuel"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
@@ -24,7 +27,7 @@ const buildingsData = [
     tourLink: "http://e2.chc.lt/turas3/",
   },
   {
-    name: ["Pastatas 4", "Building 4"],
+    name: ["Vanduo šilumos gamyboje", "Water in heat production"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
@@ -32,7 +35,7 @@ const buildingsData = [
     tourLink: "http://e2.chc.lt/turas4/",
   },
   {
-    name: ["Pastatas 5", "Building 5"],
+    name: ["Slėptuvė", "Bunker"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
@@ -40,21 +43,21 @@ const buildingsData = [
     tourLink: "http://e2.chc.lt/turas5/",
   },
   {
-    name: ["Dumu detektorius", "Smoke detector"],
+    name: ["Ekonomaizeris", "Economizer"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
     ],
   },
   {
-    name: ["Dumu detektorius", "Smoke detector"],
+    name: ["Ekonomaizeris", "Economizer"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",
     ],
   },
   {
-    name: ["Dumu detektorius", "Smoke detector"],
+    name: ["Ekonomaizeris", "Economizer"],
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus fugiat ex nihil.",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente omnis natus temporibus.",

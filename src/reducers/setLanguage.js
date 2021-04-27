@@ -1,11 +1,19 @@
 const initialState = {
-  language: null,
+  language: 0,
 };
 
 const setLanguage = (state = initialState, action) => {
   switch (action.type) {
     case "SET_LANGUAGE":
-      return { ...state, language: action.payload };
+      let newLanguage = action.payload;
+      if (newLanguage === undefined) {
+        if (state.language === 1) {
+          newLanguage = 0;
+        } else {
+          newLanguage = 1;
+        }
+      }
+      return { ...state, language: newLanguage };
     default:
       return state;
   }

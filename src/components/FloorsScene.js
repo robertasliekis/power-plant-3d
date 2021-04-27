@@ -1,10 +1,13 @@
 import React, { useRef, Suspense } from "react";
 import { connect } from "react-redux";
-import { setClickedFloor, setClickedRoom } from "../actions";
+import {
+  setClickedFloor,
+  setClickedRoom,
+  setHoveredBuilding,
+} from "../actions";
 import { Canvas, useFrame, useThree, extend } from "react-three-fiber";
 import { softShadows } from "drei";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-//import FloorsModel from "./FloorsModel";
 import PowerPlantModel from "./PowerPlantModel";
 
 extend({ OrbitControls });
@@ -13,7 +16,7 @@ softShadows();
 const CameraControls = ({ windowWidth }) => {
   const {
     camera,
-    gl: { domElement }
+    gl: { domElement },
   } = useThree();
   const controls = useRef();
   useFrame((state) => controls.current.update());
@@ -35,7 +38,14 @@ const CameraControls = ({ windowWidth }) => {
   );
 };
 
-function FloorsScene({ windowWidth, clickedFloor, clickedRoom, setClickedFloor, setClickedRoom }) {
+function FloorsScene({
+  windowWidth,
+  clickedFloor,
+  clickedRoom,
+  setClickedFloor,
+  setClickedRoom,
+  setHoveredBuilding,
+}) {
   const clickedFloorChange = (index) => {
     setClickedFloor(index);
   };
@@ -44,9 +54,17 @@ function FloorsScene({ windowWidth, clickedFloor, clickedRoom, setClickedFloor, 
     setClickedRoom(index);
   };
 
+  const hoveredBuildingChange = (index) => {
+    setHoveredBuilding(index);
+  };
+
   return (
     <div className="floor-scene-container">
-      <Canvas colorManagement shadowMap camera={{ position: [160, 50, -140], fov: 30 }}>
+      <Canvas
+        colorManagement
+        shadowMap
+        camera={{ position: [160, 50, -140], fov: 30 }}
+      >
         <CameraControls windowWidth={windowWidth} />
         <ambientLight intensity={0.6} />
         <pointLight position={[-10, 100, -20]} intensity={0.5} />
@@ -55,6 +73,7 @@ function FloorsScene({ windowWidth, clickedFloor, clickedRoom, setClickedFloor, 
             <PowerPlantModel
               onClickedFloorChange={clickedFloorChange}
               onClickedRoomChange={clickedRoomChange}
+              onHoveredBuilgingChange={hoveredBuildingChange}
               clickedFloor={clickedFloor}
               clickedRoom={clickedRoom}
               windowWidth={windowWidth}
@@ -70,13 +89,14 @@ const mapStateToProps = (state) => {
   return {
     clickedFloor: state.setClickedFloor.clickedFloor,
     clickedRoom: state.setClickedRoom.clickedRoom,
-    windowWidth: state.setWindowWidth.windowWidth
+    windowWidth: state.setWindowWidth.windowWidth,
   };
 };
 
 const mapDispatchToProps = {
   setClickedFloor,
-  setClickedRoom
+  setClickedRoom,
+  setHoveredBuilding,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FloorsScene);

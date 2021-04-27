@@ -11,6 +11,7 @@ const FloorsModel = ({
   clickedRoom,
   onClickedFloorChange,
   onClickedRoomChange,
+  onHoveredBuilgingChange,
 }) => {
   const [
     groundMesh,
@@ -110,8 +111,10 @@ const FloorsModel = ({
 
     if (mouseInside) {
       setHoveredFloor(index);
+      onHoveredBuilgingChange(index);
     } else if (hoveredFloor === index) {
       setHoveredFloor(null);
+      onHoveredBuilgingChange(null);
     }
   };
 
@@ -227,10 +230,10 @@ const FloorsModel = ({
         <meshStandardMaterial attach="material" color={"#CDCDCD"} />
       </mesh>
       <mesh geometry={pipesMeshes.pipesYellowMesh}>
-        <meshStandardMaterial attach="material" color={"yellow"} />
+        <meshStandardMaterial attach="material" color={"#CEB94F"} />
       </mesh>
       <mesh geometry={pipesMeshes.pipesSupportMesh}>
-        <meshStandardMaterial attach="material" color={"yellow"} />
+        <meshStandardMaterial attach="material" color={"#CEB94F"} />
       </mesh>
     </group>
   );

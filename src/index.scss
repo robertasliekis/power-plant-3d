@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+@font-face {
+  font-family: "Bahnschrift";
+  src: url("./fonts/Bahnschrift.woff2") format("woff2"),
+    url("./fonts/Bahnschrift.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bahnschrift";
 }
 
 div {
@@ -85,17 +94,69 @@ div {
   height: 100%;
 }
 
-.info-window {
+.pop-up-windows {
   transform: translate(0, -50%);
   position: absolute;
   top: 50%;
   right: 0%;
-  z-index: 2;
+  z-index: 15;
   width: 0px;
-  height: calc(100% - 60px);
-  .floor-container {
-    //  height: 150px;
+  height: 100%;
+  .top-container {
+    width: 100;
+    position: absolute;
+    width: 100vw;
+    transform: translate(-100vw, 0px);
+    @include displayFlexBetween();
+    padding: 40px 60px;
+    .logo {
+      width: 280px;
+      height: 100px;
+      background-position: center;
+      background-size: contain;
+      background-image: url("./images/Asset 17.png");
+      background-repeat: no-repeat;
+      align-self: flex-start;
+    }
+    .btn-info {
+      width: 50px;
+      height: 50px;
+      background-position: center;
+      background-size: contain;
+      background-image: url("./images/Asset 18.png");
+      background-repeat: no-repeat;
+    }
+  }
+
+  .building-hover-box {
+    background-color: white;
+    position: absolute;
+    padding: 10px;
+    border-radius: 10px;
+    h1,
+    p {
+      font-size: 18px;
+      white-space: nowrap;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+  .disable-click-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    transform: translate(-100%, 0px);
+  }
+  .pop-up-container {
+    transform: translate(-100%, 160px);
     .text-container {
+      a {
+        color: rgb(21, 69, 107);
+      }
       h1:nth-child(1) {
         margin-bottom: 10px;
       }
@@ -115,62 +176,136 @@ div {
   }
   .container {
     position: absolute;
-    padding: 30px;
-    width: 600px;
+    @include displayFlexColumn();
+    padding: 20px;
+    //width: 400px;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 10px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    transition: 0.5s all linear;
+    transition: 0.3s all linear;
+    min-width: 150px;
+
     .text-container {
       width: 100%;
       height: 100%;
       @include displayFlexColumn();
       justify-content: flex-start;
       align-items: flex-start;
+      padding-right: 40px;
+      padding-left: 15px;
       h1 {
-        font-size: 28px;
+        font-size: 19px;
+        white-space: nowrap;
       }
-      p {
-        text-align: justify;
+      a {
+        white-space: nowrap;
       }
+    }
+  }
+  .info-window {
+    position: absolute;
+    background-color: white;
+    transform: translate(calc(-100% - 40px), 40px);
+    padding: 30px;
+    border-radius: 30px;
+    width: 600px;
+    @include displayFlexColumn();
+    .btn-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      background-position: center;
+      background-size: contain;
+      background-image: url("./images/Asset 12.png");
+      background-repeat: no-repeat;
+    }
+    h1 {
+      white-space: nowrap;
+      font-size: 19px;
+      text-align: center;
+      word-spacing: 2px;
+    }
+    p {
+      text-align: justify;
     }
   }
 }
 
 .intro-window-container {
   @include positionAbsoluteCenter();
-  @include displayFlexColumn();
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: rgba($color: #ffffff, $alpha: 0.85);
-  p {
-    margin-bottom: 20px;
-    width: 30%;
-    text-align: center;
-  }
-  h1 {
-    margin-bottom: 20px;
-  }
-  .buttons {
-    @include displayFlex();
-    .btn {
-      @include displayFlex();
-      font-size: 25px;
-      width: 60px;
-      height: 60px;
-      background-color: grey;
-      border-radius: 10px;
+  background-color: rgba($color: #7a808a, $alpha: 0.9);
+  .welcome-container {
+    @include displayFlexColumn();
+    padding: 40px 60px;
+    width: 100%;
+    height: 100%;
+    .middle-section {
+      @include displayFlexColumn();
+      width: 100%;
+      color: white;
+
+      h1 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        word-spacing: 10px;
+        font-size: 40px;
+      }
+      p {
+        margin-bottom: 60px;
+        width: 50%;
+        text-align: center;
+        font-size: 35px;
+        letter-spacing: 2px;
+      }
+      .btn-start {
+        width: 140px;
+        height: 60px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
-    .btn:first-child {
-      margin-right: 20px;
+    .btn-language {
+      width: 80px;
+      height: 80px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      align-self: flex-end;
+      position: absolute;
+      right: 60px;
+      bottom: 40px;
+    }
+  }
+  .info-container {
+    width: 100%;
+    height: 100%;
+    @include displayFlexColumn();
+    .image-rotate {
+      width: 250px;
+      height: 250px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("./images/Asset 25a.png");
+    }
+    p {
+      margin-top: 30px;
+      font-size: 35px;
+      letter-spacing: 2px;
+      color: white;
     }
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .info-window {
+  .pop-up-windows {
     height: calc(100% - 20px);
 
     .container {

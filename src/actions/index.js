@@ -25,3 +25,16 @@ export const setLanguage = (language) => {
     payload: language,
   };
 };
+
+export const setHoveredBuilding = (index) => {
+  return {
+    type: "SET_HOVERED_BUILDING",
+    payload: index,
+  };
+};
+
+export const setIntroWindowVisisble = () => {
+  return {
+    type: "SET_INTRO_WINDOW_VISIBLE",
+  };
+};
